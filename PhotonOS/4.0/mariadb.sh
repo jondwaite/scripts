@@ -15,3 +15,9 @@ gunzip f1db.sql.gz
 mysql -u root -e "CREATE DATABASE f1db"
 mysql -u root f1db < f1db.sql
 
+# Generate a random password for the database
+PASS=`openssl rand -base64 18`
+mysql -u root -e "CREATE USER 'f1user'@'localhost' IDENTIFIED BY ${PASS};"
+mysql -u root -e "GRANT ALL PRIVILEGES ON f1.* TO 'f1user'@'localhost';"
+mysql -u root -e "FLUSH PRIVILEGES;"
+
