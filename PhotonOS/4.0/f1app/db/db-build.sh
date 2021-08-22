@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-# https://raw.githubusercontent.com/jondwaite/scripts/main/PhotonOS/4.0/mariadb.sh
+# DB Build Script (Photon OS 4.0GA)
 
 tdnf install -y mariadb
 tdnf install -y mariadb-server
