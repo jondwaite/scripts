@@ -14,6 +14,7 @@ wget http://ergast.com/downloads/f1db.sql.gz
 gunzip f1db.sql.gz
 mysql -u root -e "CREATE DATABASE f1db"
 mysql -u root f1db < f1db.sql
+rm -f f1db.sql
 
 # Generate a random password for the database
 PASS=`openssl rand -base64 18`
