@@ -4,6 +4,7 @@
 
 tdnf install -y mariadb
 tdnf install -y mariadb-server
+tdnf install -y nodejs
 
 # Start and enable the database
 systemctl enable mariadb
