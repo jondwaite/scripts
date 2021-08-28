@@ -31,6 +31,6 @@ echo "DATABASE_URL=\"mysql://f1user:${PASS}@localhost:3306/f1db?connection_limit
 chown photon:users /opt/f1orm/.env
 
 # Application setup
-cp -R f1orm/* /opt/f1orm
+cp -R /root/scripts/PhotonOS/4.0/f1app/db/f1orm/* /opt/f1orm
 chown -R photon:users /opt/f1orm/
 su photon -c 'cd /opt/f1orm; npm install prisma --save-dev; npm install'
