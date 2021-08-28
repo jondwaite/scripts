@@ -1,0 +1,21 @@
+{
+    "name": "f1orm",
+    "version": "1.0.0",
+    "description": "Database API layer for f1app",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Jon Waite",
+    "license": "MIT",
+    "devDependencies": {
+      "prisma": "^2.30.0"
+    },
+    "dependencies": {
+      "@prisma/client": "^2.30.0",
+      "@types/node": "^16.7.4",
+      "ts-node": "^10.2.1",
+      "typescript": "^4.4.2"
+    }
+  }
+  

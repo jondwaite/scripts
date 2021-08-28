@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # DB Build Script (Photon OS 4.0GA)
-
 tdnf install -y mariadb
 tdnf install -y mariadb-server
 tdnf install -y nodejs
@@ -25,8 +24,13 @@ mysql -u root -e "CREATE USER 'f1user'@'localhost' IDENTIFIED BY '${PASS}';"
 mysql -u root -e "GRANT ALL PRIVILEGES ON f1db.* TO 'f1user'@'localhost';"
 mysql -u root -e "FLUSH PRIVILEGES;"
 
-# Generate a dotenv file:
-echo "DB_HOST=localhost" > .env
-echo "DB_USER=f1user" >> .env
-echo "DB_PASS=${PASS}" >> .env
-echo "DB_DATABASE=f1db" >> .env
+# Create ORM application folder (with database connection):
+mkdir -p /opt/f1orm
+chown photon:users /opt/f1orm
+echo "DATABASE_URL=\"mysql://f1user:${PASS}@localhost:3306/f1db?connection_limit=5\"" > /opt/f1orm/.env
+chown photon:users /opt/f1orm/.env
+
+# Application setup
+cp -R f1orm/* /opt/f1orm
+chown -R photon:users /opt/f1orm/
+su photon -c 'cd /opt/f1orm; npm install prisma --save-dev; npm install'
